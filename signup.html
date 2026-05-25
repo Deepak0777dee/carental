@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign up for Car Rental — create your account and start booking premium cars today." />
+  <title>Sign Up — Car Rental</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B3FD9'/><text y='22' x='4' font-size='20'>🚗</text></svg>" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; min-height: 100vh; background: #F4F4F8; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    input, select { font-family: inherit; }
+
+    .auth-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Brand panel — amber/coral gradient for signup */
+    .auth-brand {
+      background: linear-gradient(135deg, #1A0533 0%, #2D1B6B 50%, #0F0F1A 100%);
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .auth-brand::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(245,166,35,0.1) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .auth-brand::after {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .brand-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: white; font-weight: 800; font-size: 1.25rem;
+      position: relative; z-index: 1; text-decoration: none;
+    }
+    .brand-logo svg { width: 36px; height: 22px; }
+
+    .brand-content { position: relative; z-index: 1; margin-top: 2rem; }
+    .brand-tag {
+      display: inline-block;
+      background: rgba(91,63,217,0.2);
+      color: #9B7EFF;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.85rem; border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .brand-content h2 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; color: white; margin-bottom: 1rem; }
+    .brand-content p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 400px; }
+
+    .brand-perks { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.85rem; position: relative; z-index: 1; }
+    .perk {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.875rem; color: rgba(255,255,255,0.75);
+    }
+    .perk-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(91,63,217,0.3);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .perk-icon svg { width: 16px; height: 16px; stroke: #9B7EFF; fill: none; stroke-width: 2; }
+
+    /* Form panel */
+    .auth-form-panel {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 2.5rem 1.5rem; background: white;
+    }
+    .auth-form-inner { width: 100%; max-width: 420px; }
+
+    .auth-form-header { margin-bottom: 1.75rem; }
+    .auth-form-header h1 { font-size: 1.75rem; font-weight: 800; color: #1A1A2E; margin-bottom: 0.35rem; }
+    .auth-form-header p { font-size: 0.9rem; color: #777790; }
+    .auth-form-header a { color: #5B3FD9; font-weight: 700; }
+    .auth-form-header a:hover { text-decoration: underline; }
+
+    /* Role tabs */
+    .role-tabs {
+      display: flex; gap: 0;
+      background: #F4F4F8;
+      border-radius: 50px; padding: 4px;
+      margin-bottom: 1.5rem;
+    }
+    .role-tab {
+      flex: 1; padding: 0.65rem;
+      border-radius: 50px; border: none;
+      font-size: 0.875rem; font-weight: 600;
+      color: #777790; background: transparent;
+      cursor: pointer; transition: all 0.25s ease;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .role-tab svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .role-tab.active { background: #5B3FD9; color: white; box-shadow: 0 4px 14px rgba(91,63,217,0.35); }
+
+    /* Fields */
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 700; color: #444; margin-bottom: 0.4rem; }
+    .field-wrap { position: relative; }
+    .field-icon {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      width: 18px; height: 18px;
+      stroke: #AAAABC; fill: none; stroke-width: 2;
+      pointer-events: none;
+    }
+    .field-wrap input, .field-wrap select {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.85rem;
+      border: 1.5px solid #E0E0EC;
+      border-radius: 12px;
+      font-size: 0.9rem; color: #1A1A2E;
+      background: #FAFAFD;
+      transition: all 0.25s ease;
+      -webkit-appearance: none;
+    }
+    .field-wrap input:focus, .field-wrap select:focus {
+      border-color: #5B3FD9; background: white;
+      box-shadow: 0 0 0 4px rgba(91,63,217,0.1); outline: none;
+    }
+    .field-wrap input.error, .field-wrap select.error {
+      border-color: #e11d48; box-shadow: 0 0 0 4px rgba(225,29,72,0.08);
+    }
+    .field-error { font-size: 0.75rem; color: #e11d48; margin-top: 0.35rem; display: none; }
+    .field-error.show { display: block; }
+    .pw-toggle {
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; padding: 4px; color: #AAAABC;
+    }
+    .pw-toggle svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; display: block; }
+
+    /* Password strength */
+    .pw-strength { margin-top: 0.5rem; }
+    .pw-strength-bar { height: 4px; background: #E0E0EC; border-radius: 50px; overflow: hidden; }
+    .pw-strength-fill { height: 100%; width: 0%; border-radius: 50px; transition: all 0.3s ease; }
+    .pw-strength-label { font-size: 0.72rem; color: #999; margin-top: 0.25rem; }
+
+    /* Submit */
+    .auth-submit {
+      width: 100%; padding: 1rem;
+      background: linear-gradient(135deg, #5B3FD9, #7B5EF0);
+      color: white; border-radius: 50px;
+      font-size: 1rem; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(91,63,217,0.3);
+      transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+      position: relative; overflow: hidden; margin-top: 0.5rem;
+    }
+    .auth-submit::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s ease;
+    }
+    .auth-submit:hover::before { left: 100%; }
+    .auth-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(91,63,217,0.4); }
+    .auth-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .spinner {
+      width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.35);
+      border-top-color: white; border-radius: 50%;
+      animation: spin 0.7s linear infinite; display: none; margin: 0 auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .auth-submit.loading .btn-text { display: none; }
+    .auth-submit.loading .spinner { display: block; }
+
+    .auth-global-error {
+      background: rgba(225,29,72,0.08); border: 1px solid rgba(225,29,72,0.2);
+      border-radius: 10px; padding: 0.85rem 1rem;
+      font-size: 0.85rem; color: #e11d48;
+      margin-bottom: 1rem; display: none;
+    }
+    .auth-global-error.show { display: block; }
+    .auth-success {
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 10px; padding: 0.85rem 1rem;
+      font-size: 0.85rem; color: #16a34a;
+      margin-bottom: 1rem; display: none;
+    }
+    .auth-success.show { display: block; }
+
+    .terms-note { font-size: 0.75rem; color: #999; text-align: center; margin-top: 1rem; }
+    .terms-note a { color: #5B3FD9; }
+
+    @media (min-width: 768px) {
+      .auth-wrapper { flex-direction: row; }
+      .auth-brand { width: 480px; flex-shrink: 0; padding: 3rem; }
+      .auth-form-panel { padding: 3rem; }
+    }
+    @media (min-width: 1024px) {
+      .auth-brand { width: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+
+    <!-- LEFT: Brand -->
+    <div class="auth-brand">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 40 24" fill="none">
+          <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9"/>
+          <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9"/>
+          <circle cx="10" cy="20" r="4" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="30" cy="20" r="4" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+        Car Rental
+      </a>
+
+      <div class="brand-content">
+        <span class="brand-tag">✨ Join Us Today</span>
+        <h2>Drive premium, pay less.</h2>
+        <p>Create your account and unlock exclusive member deals, priority support, and a personalized dashboard for all your rental needs.</p>
+
+        <div class="brand-perks">
+          <div class="perk">
+            <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            Instant booking confirmation
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            24/7 roadside assistance included
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            Access to 540+ premium vehicles
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+            Best price guarantee — always
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="auth-form-panel">
+      <div class="auth-form-inner">
+
+        <div class="auth-form-header">
+          <h1>Create account 🎉</h1>
+          <p>Already have an account? <a href="login.html" id="login-link">Sign in</a></p>
+        </div>
+
+        <!-- Role Tabs -->
+        <div class="role-tabs" role="tablist">
+          <button class="role-tab active" data-role="user" id="signup-tab-user">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            User
+          </button>
+          <button class="role-tab" data-role="admin" id="signup-tab-admin">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Admin
+          </button>
+        </div>
+
+        <div class="auth-global-error" id="signup-error" role="alert"></div>
+        <div class="auth-success" id="signup-success" role="status"></div>
+
+        <form id="signup-form" novalidate>
+          <div class="field">
+            <label for="signup-name">Full Name</label>
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <input type="text" id="signup-name" placeholder="John Doe" autocomplete="name" required />
+            </div>
+            <div class="field-error" id="signup-name-err">Please enter your full name.</div>
+          </div>
+
+          <div class="field">
+            <label for="signup-email">Email Address</label>
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+            <div class="field-error" id="signup-email-err">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field">
+            <label for="signup-password">Password</label>
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <input type="password" id="signup-password" placeholder="Min. 6 characters" autocomplete="new-password" required />
+              <button type="button" class="pw-toggle" id="pw-toggle-1" aria-label="Toggle password">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="pw-strength">
+              <div class="pw-strength-bar"><div class="pw-strength-fill" id="pw-strength-fill"></div></div>
+              <div class="pw-strength-label" id="pw-strength-label">Enter a password</div>
+            </div>
+            <div class="field-error" id="signup-pw-err">Password must be at least 6 characters.</div>
+          </div>
+
+          <div class="field">
+            <label for="signup-confirm">Confirm Password</label>
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <input type="password" id="signup-confirm" placeholder="Repeat password" autocomplete="new-password" required />
+              <button type="button" class="pw-toggle" id="pw-toggle-2" aria-label="Toggle confirm password">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error" id="signup-confirm-err">Passwords do not match.</div>
+          </div>
+
+          <button type="submit" class="auth-submit" id="signup-submit-btn">
+            <span class="btn-text">Create Account</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+
+        <p class="terms-note">
+          By signing up you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    // Role tabs
+    let selectedRole = 'user';
+    document.querySelectorAll('.role-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        selectedRole = tab.dataset.role;
+      });
+    });
+
+    // Password toggles
+    function makePwToggle(toggleId, inputId) {
+      const input = document.getElementById(inputId);
+      document.getElementById(toggleId).addEventListener('click', () => {
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    }
+    makePwToggle('pw-toggle-1', 'signup-password');
+    makePwToggle('pw-toggle-2', 'signup-confirm');
+
+    // Password strength
+    document.getElementById('signup-password').addEventListener('input', (e) => {
+      const val = e.target.value;
+      const fill = document.getElementById('pw-strength-fill');
+      const label = document.getElementById('pw-strength-label');
+      let strength = 0;
+      if (val.length >= 6) strength++;
+      if (val.length >= 10) strength++;
+      if (/[A-Z]/.test(val) && /[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+      const configs = [
+        { w: '25%', c: '#e11d48', t: 'Weak' },
+        { w: '50%', c: '#F5A623', t: 'Fair' },
+        { w: '75%', c: '#3b82f6', t: 'Good' },
+        { w: '100%', c: '#22c55e', t: 'Strong' },
+      ];
+      if (!val) { fill.style.width = '0%'; label.textContent = 'Enter a password'; return; }
+      const cfg = configs[Math.min(strength - 1, 3)] || configs[0];
+      fill.style.width = cfg.w;
+      fill.style.background = cfg.c;
+      label.textContent = cfg.t;
+      label.style.color = cfg.c;
+    });
+
+    // Validation
+    function showErr(id, msgId) { document.getElementById(id).classList.add('error'); document.getElementById(msgId).classList.add('show'); }
+    function clearErr(id, msgId) { document.getElementById(id).classList.remove('error'); document.getElementById(msgId).classList.remove('show'); }
+    function showGlobal(msg, isErr = true) {
+      const el = document.getElementById(isErr ? 'signup-error' : 'signup-success');
+      const ot = document.getElementById(isErr ? 'signup-success' : 'signup-error');
+      el.textContent = msg; el.classList.add('show');
+      ot.classList.remove('show');
+    }
+
+    if (authIsLoggedIn()) window.location.href = 'dashboard.html';
+
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+      const name = document.getElementById('signup-name');
+      const email = document.getElementById('signup-email');
+      const pw = document.getElementById('signup-password');
+      const confirm = document.getElementById('signup-confirm');
+
+      ['signup-name','signup-email','signup-password','signup-confirm'].forEach((id, i) => clearErr(id, ['signup-name-err','signup-email-err','signup-pw-err','signup-confirm-err'][i]));
+      document.getElementById('signup-error').classList.remove('show');
+      document.getElementById('signup-success').classList.remove('show');
+
+      if (name.value.trim().length < 2) { showErr('signup-name', 'signup-name-err'); valid = false; }
+      const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRx.test(email.value.trim())) { showErr('signup-email', 'signup-email-err'); valid = false; }
+      if (pw.value.length < 6) { showErr('signup-password', 'signup-pw-err'); valid = false; }
+      if (pw.value !== confirm.value) { showErr('signup-confirm', 'signup-confirm-err'); valid = false; }
+      if (!valid) return;
+
+      const btn = document.getElementById('signup-submit-btn');
+      btn.classList.add('loading'); btn.disabled = true;
+
+      setTimeout(() => {
+        authSignup(name.value.trim(), email.value.trim(), selectedRole, pw.value);
+        showGlobal('Account created! Redirecting to your dashboard...', false);
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 900);
+      }, 900);
+    });
+  </script>
+</body>
+</html>
