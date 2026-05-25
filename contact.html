@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Car Rental - Reach us for bookings, support or any inquiries. Visit our office at Oxford Ave. Cary, NC 27511 or call +537 547-6401." />
+  <title>Contact Us - Car Rental</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B3FD9'/><text y='22' x='4' font-size='20'>🚗</text></svg>" />
+</head>
+<body>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9"/>
+          <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9"/>
+          <circle cx="10" cy="20" r="4" fill="#333"/>
+          <circle cx="30" cy="20" r="4" fill="#333"/>
+          <circle cx="10" cy="20" r="2" fill="#777"/>
+          <circle cx="30" cy="20" r="2" fill="#777"/>
+        </svg>
+        Car Rental
+      </a>
+      <ul class="nav-menu" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vehicles.html">Vehicles</a></li>
+        <li><a href="details.html">Details</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+      <div class="nav-phone">
+        <div class="nav-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="nav-phone-text">
+          <span>Need help?</span>
+          <strong>+996 247-1680</strong>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="nav-logo">Car Rental</a>
+        <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vehicles.html">Vehicles</a></li>
+        <li><a href="details.html">Details</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+      <div class="mobile-phone">
+        <div class="nav-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="nav-phone-text">
+          <span>Need help?</span>
+          <strong>+996 247-1680</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================= PAGE HERO ======================= -->
+    <section class="page-hero" aria-label="Contact Us header">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span class="current">Contact Us</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT MAIN ======================= -->
+    <section class="contact-section" aria-label="Contact form and map">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Booking Form (Purple) -->
+          <div class="contact-book-card reveal">
+            <h2>Book your car</h2>
+            <form class="book-form" id="contact-book-form" novalidate>
+              <div class="form-group">
+                <label for="car-type-contact" class="sr-only">Car type</label>
+                <select id="car-type-contact" class="form-select" required aria-label="Select car type">
+                  <option value="" disabled selected>Car type</option>
+                  <option value="sedan">Sedan</option>
+                  <option value="suv">SUV</option>
+                  <option value="sport">Sport</option>
+                  <option value="cabriolet">Cabriolet</option>
+                  <option value="pickup">Pickup</option>
+                  <option value="minivan">Minivan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="place-rental-contact" class="sr-only">Place of rental</label>
+                <select id="place-rental-contact" class="form-select" required aria-label="Select place of rental">
+                  <option value="" disabled selected>Place of rental</option>
+                  <option value="airport">Airport</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="hotel">Hotel Delivery</option>
+                  <option value="oxford">Oxford Ave, Cary</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="place-return-contact" class="sr-only">Place of return</label>
+                <select id="place-return-contact" class="form-select" required aria-label="Select place of return">
+                  <option value="" disabled selected>Place of return</option>
+                  <option value="airport">Airport</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="hotel">Hotel</option>
+                  <option value="oxford">Oxford Ave, Cary</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rental-date-contact" class="sr-only">Rental date</label>
+                <input type="date" id="rental-date-contact" class="form-date" aria-label="Rental date" />
+              </div>
+              <div class="form-group">
+                <label for="return-date-contact" class="sr-only">Return date</label>
+                <input type="date" id="return-date-contact" class="form-date" aria-label="Return date" />
+              </div>
+              <button type="submit" class="btn btn-primary" id="contact-book-btn">Book now</button>
+            </form>
+          </div>
+
+          <!-- Map / Image -->
+          <div class="contact-map reveal" aria-label="Location map">
+            <picture>
+              <source srcset="images/contact_map_1779693938813.png" type="image/png" />
+              <img src="images/contact_map_1779693938813.png" alt="Our location map - Oxford Ave, Cary NC" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:20px;" />
+            </picture>
+          </div>
+        </div>
+
+        <!-- Contact Info Row -->
+        <div class="contact-info-row">
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <small>Address</small>
+              <strong>Oxford Ave. Cary, NC 27511</strong>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <small>Email</small>
+              <strong>nwiger@yahoo.com</strong>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <small>Phone</small>
+              <strong>+537 547-6401</strong>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <small>Opening hours</small>
+              <strong>Sun–Mon: 10am – 10pm</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= BLOG POSTS ======================= -->
+    <section class="blog-section" aria-label="Latest blog posts">
+      <div class="container">
+        <h2>Latest blog posts &amp; news</h2>
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-card-img">
+              <picture>
+                <source srcset="images/blog_car1_1779693923006.png" type="image/png" />
+                <img src="images/blog_car1_1779693923006.png" alt="How To Choose The Right Car" loading="lazy" />
+              </picture>
+            </div>
+            <div class="blog-card-body">
+              <h3>How To Choose The Right Car</h3>
+              <p class="blog-meta">News / 12April 2024</p>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card-img">
+              <picture>
+                <source srcset="images/blog_car2_1779693884442.png" type="image/png" />
+                <img src="images/blog_car2_1779693884442.png" alt="Which plan is right for me?" loading="lazy" />
+              </picture>
+            </div>
+            <div class="blog-card-body">
+              <h3>Which plan is right for me?</h3>
+              <p class="blog-meta">News / 12April 2024</p>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card-img">
+              <picture>
+                <source srcset="images/blog_car3_1779693900434.png" type="image/png" />
+                <img src="images/blog_car3_1779693900434.png" alt="Enjoy Speed, Choice & Total Control" loading="lazy" />
+              </picture>
+            </div>
+            <div class="blog-card-body">
+              <h3>Enjoy Speed, Choice &amp; Total Control</h3>
+              <p class="blog-meta">News / 12April 2024</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= BRAND LOGOS ======================= -->
+    <section class="brands-section" aria-label="Car brands we offer">
+      <div class="container">
+        <div class="brands-grid">
+          <div class="brand-logo" aria-label="Toyota">
+            <svg viewBox="0 0 60 30" fill="currentColor">
+              <ellipse cx="30" cy="15" rx="28" ry="13" fill="none" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="30" cy="15" rx="18" ry="8" fill="none" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="30" cy="15" rx="8" ry="13" fill="none" stroke="currentColor" stroke-width="2"/>
+              <text x="30" y="20" text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor">TOYOTA</text>
+            </svg>
+          </div>
+          <div class="brand-logo" aria-label="Ford">
+            <svg viewBox="0 0 80 30" fill="none">
+              <ellipse cx="40" cy="15" rx="38" ry="13" fill="none" stroke="currentColor" stroke-width="2"/>
+              <text x="40" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="currentColor" font-style="italic">Ford</text>
+            </svg>
+          </div>
+          <div class="brand-logo" aria-label="Mercedes-Benz">
+            <svg viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="13" stroke="currentColor" stroke-width="2"/>
+              <path d="M15 2 L15 28 M2 15 L28 15" stroke="currentColor" stroke-width="0" fill="none"/>
+              <path d="M15 2 L26 22 L4 22 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="brand-logo" aria-label="Jeep">
+            <span style="font-size:1.1rem;font-weight:800;letter-spacing:2px;">JEEP</span>
+          </div>
+          <div class="brand-logo" aria-label="BMW">
+            <svg viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="13" stroke="currentColor" stroke-width="2"/>
+              <circle cx="15" cy="15" r="7" stroke="currentColor" stroke-width="2"/>
+              <line x1="15" y1="2" x2="15" y2="28" stroke="currentColor" stroke-width="2"/>
+              <line x1="2" y1="15" x2="28" y2="15" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="brand-logo" aria-label="Audi">
+            <svg viewBox="0 0 80 30" fill="none">
+              <circle cx="15" cy="15" r="12" stroke="currentColor" stroke-width="2"/>
+              <circle cx="30" cy="15" r="12" stroke="currentColor" stroke-width="2"/>
+              <circle cx="45" cy="15" r="12" stroke="currentColor" stroke-width="2"/>
+              <circle cx="60" cy="15" r="12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CTA SEARCH ======================= -->
+    <section class="cta-section" style="margin-top:3rem;" aria-label="Search cars by city">
+      <svg class="cta-car-img" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 140 L110 70 H290 L350 140 H50Z" fill="rgba(255,255,255,0.3)"/>
+        <rect x="30" y="138" width="340" height="28" rx="8" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="110" cy="170" r="28" fill="rgba(255,255,255,0.25)"/>
+        <circle cx="290" cy="170" r="28" fill="rgba(255,255,255,0.25)"/>
+        <rect x="160" y="90" width="80" height="50" rx="4" fill="rgba(255,255,255,0.15)"/>
+      </svg>
+      <div class="cta-content">
+        <h2>Enjoy every mile with adorable companionship.</h2>
+        <p>Amet cras hac orci lacus. Faucibus ipsum arcu lectus nibh sapien bibendum ullamcorper in.</p>
+        <div class="cta-search" role="search">
+          <label for="cta-city-contact" class="sr-only">Enter city</label>
+          <input type="text" id="cta-city-contact" placeholder="City" aria-label="Enter city" />
+          <button type="button" id="cta-search-contact-btn">Search</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <!-- Contact strip -->
+      <div class="footer-contacts">
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="100">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><small>Address</small><strong>Oxford Ave. Cary, NC 27511</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="200">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><small>Email</small><strong>nwiger@yahoo.com</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="300">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div><small>Phone</small><strong>+537 547-6401</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="400">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><small>Opening hours</small><strong>Sun–Mon: 10am – 10pm</strong></div>
+        </div>
+      </div>
+
+      <!-- Footer columns -->
+      <div class="footer-cols">
+        <!-- Brand -->
+        <div class="footer-col footer-col-brand" data-anim="fade-up">
+          <a href="index.html" class="footer-logo">
+            <svg viewBox="0 0 40 24" width="32" fill="none" aria-hidden="true">
+              <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9"/>
+              <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9"/>
+              <circle cx="10" cy="20" r="4" fill="#333"/>
+              <circle cx="30" cy="20" r="4" fill="#333"/>
+            </svg>
+            Car Rental
+          </a>
+          <p class="footer-tagline">Faucibus faucibus pellentesque dictum turpis. Id pellentesque dictum turpis massa a id iaculis lorem t...</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="X/Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="footer-col" data-anim="fade-up" data-delay="100">
+          <h4>Useful links</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">F.A.Q</a></li>
+          </ul>
+        </div>
+
+        <!-- Vehicles -->
+        <div class="footer-col" data-anim="fade-up" data-delay="200">
+          <h4>Vehicles</h4>
+          <ul>
+            <li><a href="vehicles.html">Sedan</a></li>
+            <li><a href="vehicles.html">Cabriolet</a></li>
+            <li><a href="vehicles.html">Pickup</a></li>
+            <li><a href="vehicles.html">Minivan</a></li>
+            <li><a href="vehicles.html">SUV</a></li>
+          </ul>
+        </div>
+
+        <!-- Download App -->
+        <div class="footer-col" data-anim="fade-up" data-delay="300">
+          <h4>Download App</h4>
+          <div class="app-btns">
+            <a href="#" class="app-btn" id="appstore-btn" aria-label="Download on App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.2 1.28-2.18 3.81.03 3.02 2.65 4.03 2.68 4.04l-.05.23zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div class="app-btn-text"><small>Download on the</small><strong>App Store</strong></div>
+            </a>
+            <a href="#" class="app-btn" id="playstore-btn" aria-label="Get it on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76A2 2 0 012 22V2a2 2 0 011.18-1.76l11.68 11.76L3.18 23.76zM20.36 10.76l-2.6-1.48-3.08 3.1 3.08 3.1 2.64-1.5a2 2 0 000-3.22zM4.16.7l13.12 7.44-2.92 2.94L4.16.7zM14.36 15.8L4.16 23.3l10.2-5.56 2.92 2.94-13.12-4.88z"/></svg>
+              <div class="app-btn-text"><small>GET IT ON</small><strong>Google Play</strong></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; Copyright Car Rental 2024. Design by Figma.guru</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}</style>
+  <script src="js/main.js"></script>
+</body>
+</html>

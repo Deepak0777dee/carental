@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse our full fleet of rental vehicles - sedans, SUVs, sports cars, cabriolets, pickups and minivans. Find your perfect car today." />
+  <title>Vehicles - Car Rental Fleet</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B3FD9'/><text y='22' x='4' font-size='20'>🚗</text></svg>" />
+  <style>
+    .vehicles-hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #7B5EF0 100%);
+      border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl);
+      margin: 1rem;
+      padding: 3rem 2rem;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .vehicles-hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    }
+    .vehicles-hero-section h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .vehicles-hero-section p {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .vehicles-page-section {
+      padding: 3rem 0 5rem;
+    }
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .sort-select {
+      padding: 0.5rem 1rem;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font);
+    }
+    .sort-select:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    .cars-count {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .cars-count strong {
+      color: var(--text-primary);
+    }
+    .no-results {
+      text-align: center;
+      padding: 4rem 0;
+      color: var(--gray-500);
+      display: none;
+    }
+    .no-results svg {
+      width: 64px;
+      height: 64px;
+      stroke: var(--gray-300);
+      fill: none;
+      stroke-width: 1.5;
+      margin: 0 auto 1rem;
+    }
+    .no-results h3 {
+      font-size: 1.25rem;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+    }
+    .price-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .car-card-img { position: relative; }
+    .popular-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9"/>
+          <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9"/>
+          <circle cx="10" cy="20" r="4" fill="#333"/>
+          <circle cx="30" cy="20" r="4" fill="#333"/>
+          <circle cx="10" cy="20" r="2" fill="#777"/>
+          <circle cx="30" cy="20" r="2" fill="#777"/>
+        </svg>
+        Car Rental
+      </a>
+      <ul class="nav-menu" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vehicles.html" class="active">Vehicles</a></li>
+        <li><a href="details.html">Details</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <div class="nav-phone">
+        <div class="nav-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="nav-phone-text">
+          <span>Need help?</span>
+          <strong>+996 247-1680</strong>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="nav-logo">Car Rental</a>
+        <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vehicles.html" class="active">Vehicles</a></li>
+        <li><a href="details.html">Details</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <div class="mobile-phone">
+        <div class="nav-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="nav-phone-text"><span>Need help?</span><strong>+996 247-1680</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="vehicles-hero-section" aria-label="Vehicles page header">
+      <h1>Our Fleet</h1>
+      <p>Discover our wide range of premium vehicles for every occasion — from executive sedans to rugged SUVs.</p>
+    </section>
+
+    <!-- Filter & Cars -->
+    <section class="vehicles-page-section" aria-label="Vehicle listing">
+      <div class="container">
+        <div class="filter-row">
+          <div class="filter-group" role="group" aria-label="Filter by vehicle type">
+            <button class="filter-tab active" data-filter="all" id="filter-all">All</button>
+            <button class="filter-tab" data-filter="sedan" id="filter-sedan">Sedan</button>
+            <button class="filter-tab" data-filter="sport" id="filter-sport">Sport</button>
+            <button class="filter-tab" data-filter="suv" id="filter-suv">SUV</button>
+            <button class="filter-tab" data-filter="cabriolet" id="filter-cabriolet">Cabriolet</button>
+            <button class="filter-tab" data-filter="minivan" id="filter-minivan">Minivan</button>
+          </div>
+          <label for="sort-cars" class="sr-only">Sort vehicles</label>
+          <select class="sort-select" id="sort-cars" aria-label="Sort vehicles">
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div class="cars-grid" id="vehicles-grid">
+          <!-- Mercedes Sedan $25 -->
+          <article class="car-card reveal" data-type="sedan" data-price="25">
+            <div class="car-card-img">
+              <span class="popular-badge">Popular</span>
+              <picture>
+                <source srcset="images/car_mercedes_1779693961278.png" type="image/png"/>
+                <img src="images/car_mercedes_1779693961278.png" alt="Mercedes Sedan" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>Mercedes</h3><span>Sedan</span></div>
+                <div class="car-price"><span class="price">$25</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Automat</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PB 95</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=mercedes-sedan" class="btn btn-purple" id="veh1-btn">View Details</a>
+            </div>
+          </article>
+
+          <!-- Mercedes Sport $50 -->
+          <article class="car-card reveal" data-type="sport" data-price="50">
+            <div class="car-card-img">
+              <picture>
+                <source srcset="images/car_sport_1779693979415.png" type="image/png"/>
+                <img src="images/car_sport_1779693979415.png" alt="Mercedes Sport" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>Mercedes</h3><span>Sport</span></div>
+                <div class="car-price"><span class="price">$50</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Automat</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PB 95</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=mercedes-sport" class="btn btn-purple" id="veh2-btn">View Details</a>
+            </div>
+          </article>
+
+          <!-- Mercedes GLE SUV $45 -->
+          <article class="car-card reveal" data-type="suv" data-price="45">
+            <div class="car-card-img">
+              <picture>
+                <source srcset="images/car_suv_1779693998248.png" type="image/png"/>
+                <img src="images/car_suv_1779693998248.png" alt="Mercedes GLE SUV" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>Mercedes GLE</h3><span>SUV</span></div>
+                <div class="car-price"><span class="price">$45</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Automat</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PB 95</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=mercedes-gle" class="btn btn-purple" id="veh3-btn">View Details</a>
+            </div>
+          </article>
+
+          <!-- BMW 5 Series $60 -->
+          <article class="car-card reveal" data-type="sedan" data-price="60">
+            <div class="car-card-img">
+              <picture>
+                <source srcset="images/car_mercedes_1779693961278.png" type="image/png"/>
+                <img src="images/car_mercedes_1779693961278.png" alt="BMW 5 Series Sedan" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>BMW 5 Series</h3><span>Sedan</span></div>
+                <div class="car-price"><span class="price">$60</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Automat</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PB 95</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=bmw-5" class="btn btn-purple" id="veh4-btn">View Details</a>
+            </div>
+          </article>
+
+          <!-- Audi A4 Cabriolet $75 -->
+          <article class="car-card reveal" data-type="cabriolet" data-price="75">
+            <div class="car-card-img">
+              <picture>
+                <source srcset="images/car_sport_1779693979415.png" type="image/png"/>
+                <img src="images/car_sport_1779693979415.png" alt="Audi A4 Cabriolet" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>Audi A4</h3><span>Cabriolet</span></div>
+                <div class="car-price"><span class="price">$75</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Manual</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PB 98</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=audi-a4" class="btn btn-purple" id="veh5-btn">View Details</a>
+            </div>
+          </article>
+
+          <!-- Toyota Alphard Minivan $55 -->
+          <article class="car-card reveal" data-type="minivan" data-price="55">
+            <div class="car-card-img">
+              <picture>
+                <source srcset="images/car_suv_1779693998248.png" type="image/png"/>
+                <img src="images/car_suv_1779693998248.png" alt="Toyota Alphard Minivan" loading="lazy"/>
+              </picture>
+            </div>
+            <div class="car-card-body">
+              <div class="car-card-header">
+                <div class="car-name"><h3>Toyota Alphard</h3><span>Minivan</span></div>
+                <div class="car-price"><span class="price">$55</span><span class="per">per day</span></div>
+              </div>
+              <div class="car-specs">
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Automat</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Diesel</div>
+                <div class="car-spec"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>Air Conditioner</div>
+              </div>
+              <a href="details.html?car=toyota-alphard" class="btn btn-purple" id="veh6-btn">View Details</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- No results placeholder -->
+        <div class="no-results" id="no-results" aria-live="polite">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <h3>No vehicles found</h3>
+          <p>Try selecting a different category</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facts Section (reuse) -->
+    <section class="facts-section" aria-label="Facts in numbers">
+      <svg class="facts-car-bg" viewBox="0 0 500 200" fill="none" aria-hidden="true">
+        <path d="M80 140 L130 80 H370 L420 140 H80Z" fill="white"/>
+        <path d="M60 140 H440 V160 H60Z" fill="white"/>
+        <circle cx="130" cy="165" r="25" fill="white"/>
+        <circle cx="370" cy="165" r="25" fill="white"/>
+      </svg>
+      <h2>Facts In Numbers</h2>
+      <p>Amet cras hac orci lacus. Faucibus ipsum arcu lectus nibh sapien bibendum ullamcorper in. Diam tincidunt tincidunt erat at semper fermentum</p>
+      <div class="facts-grid">
+        <div class="fact-card reveal">
+          <div class="fact-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg></div>
+          <div><div class="fact-number" data-target="540" data-suffix="+">0+</div><div class="fact-label">Cars</div></div>
+        </div>
+        <div class="fact-card reveal">
+          <div class="fact-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div><div class="fact-number" data-target="20" data-suffix="k+">0k+</div><div class="fact-label">Customers</div></div>
+        </div>
+        <div class="fact-card reveal">
+          <div class="fact-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div><div class="fact-number" data-target="25" data-suffix="+">0+</div><div class="fact-label">Years</div></div>
+        </div>
+        <div class="fact-card reveal">
+          <div class="fact-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><div class="fact-number" data-target="20" data-suffix="m+">0m+</div><div class="fact-label">Miles</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-label="Search cars by city">
+      <svg class="cta-car-img" viewBox="0 0 400 200" fill="none" aria-hidden="true">
+        <path d="M50 140 L110 70 H290 L350 140 H50Z" fill="rgba(255,255,255,0.3)"/>
+        <rect x="30" y="138" width="340" height="28" rx="8" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="110" cy="170" r="28" fill="rgba(255,255,255,0.25)"/>
+        <circle cx="290" cy="170" r="28" fill="rgba(255,255,255,0.25)"/>
+      </svg>
+      <div class="cta-content">
+        <h2>Enjoy every mile with adorable companionship.</h2>
+        <p>Amet cras hac orci lacus. Faucibus ipsum arcu lectus nibh sapien bibendum ullamcorper in.</p>
+        <div class="cta-search" role="search">
+          <label for="cta-city-vehicles" class="sr-only">Enter city</label>
+          <input type="text" id="cta-city-vehicles" placeholder="City" aria-label="Enter city"/>
+          <button type="button" id="cta-search-vehicles-btn">Search</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as other pages) -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <!-- Contact strip -->
+      <div class="footer-contacts">
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="100">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><small>Address</small><strong>Oxford Ave. Cary, NC 27511</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="200">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><small>Email</small><strong>nwiger@yahoo.com</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="300">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div><small>Phone</small><strong>+537 547-6401</strong></div>
+        </div>
+        <div class="footer-contact-item" data-anim="fade-up" data-delay="400">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><small>Opening hours</small><strong>Sun–Mon: 10am – 10pm</strong></div>
+        </div>
+      </div>
+
+      <!-- Footer columns -->
+      <div class="footer-cols">
+        <!-- Brand -->
+        <div class="footer-col footer-col-brand" data-anim="fade-up">
+          <a href="index.html" class="footer-logo">
+            <svg viewBox="0 0 40 24" width="32" fill="none" aria-hidden="true">
+              <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9"/>
+              <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9"/>
+              <circle cx="10" cy="20" r="4" fill="#333"/>
+              <circle cx="30" cy="20" r="4" fill="#333"/>
+            </svg>
+            Car Rental
+          </a>
+          <p class="footer-tagline">Faucibus faucibus pellentesque dictum turpis. Id pellentesque dictum turpis massa a id iaculis lorem t...</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="X/Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="footer-col" data-anim="fade-up" data-delay="100">
+          <h4>Useful links</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">F.A.Q</a></li>
+          </ul>
+        </div>
+
+        <!-- Vehicles -->
+        <div class="footer-col" data-anim="fade-up" data-delay="200">
+          <h4>Vehicles</h4>
+          <ul>
+            <li><a href="vehicles.html">Sedan</a></li>
+            <li><a href="vehicles.html">Cabriolet</a></li>
+            <li><a href="vehicles.html">Pickup</a></li>
+            <li><a href="vehicles.html">Minivan</a></li>
+            <li><a href="vehicles.html">SUV</a></li>
+          </ul>
+        </div>
+
+        <!-- Download App -->
+        <div class="footer-col" data-anim="fade-up" data-delay="300">
+          <h4>Download App</h4>
+          <div class="app-btns">
+            <a href="#" class="app-btn" id="appstore-btn" aria-label="Download on App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.2 1.28-2.18 3.81.03 3.02 2.65 4.03 2.68 4.04l-.05.23zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div class="app-btn-text"><small>Download on the</small><strong>App Store</strong></div>
+            </a>
+            <a href="#" class="app-btn" id="playstore-btn" aria-label="Get it on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76A2 2 0 012 22V2a2 2 0 011.18-1.76l11.68 11.76L3.18 23.76zM20.36 10.76l-2.6-1.48-3.08 3.1 3.08 3.1 2.64-1.5a2 2 0 000-3.22zM4.16.7l13.12 7.44-2.92 2.94L4.16.7zM14.36 15.8L4.16 23.3l10.2-5.56 2.92 2.94-13.12-4.88z"/></svg>
+              <div class="app-btn-text"><small>GET IT ON</small><strong>Google Play</strong></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; Copyright Car Rental 2024. Design by Figma.guru</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}</style>
+  <script src="js/main.js"></script>
+  <script>
+    // Sort functionality
+    document.getElementById('sort-cars').addEventListener('change', function() {
+      const grid = document.getElementById('vehicles-grid');
+      const cards = Array.from(grid.querySelectorAll('.car-card:not([style*="display: none"])'));
+      
+      cards.sort((a, b) => {
+        const priceA = parseInt(a.dataset.price);
+        const priceB = parseInt(b.dataset.price);
+        if (this.value === 'price-asc') return priceA - priceB;
+        if (this.value === 'price-desc') return priceB - priceA;
+        return 0;
+      });
+      
+      cards.forEach(card => grid.appendChild(card));
+    });
+
+    // Filter with no-results
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+        const allCards = document.querySelectorAll('.car-card');
+        let visibleCount = 0;
+        allCards.forEach(card => {
+          const show = filter === 'all' || card.dataset.type === filter;
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+        document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
