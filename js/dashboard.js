@@ -4,9 +4,9 @@
 
 /* ---- DATA MOCK ---- */
 const MOCK_TRIPS_USER = [
-  { id: 'T-1001', car: 'Mercedes E-Class', type: 'Sedan', from: 'Oxford Ave, Cary', to: 'Airport', start: '2026-05-10', end: '2026-05-15', amount: '$125', status: 'completed', img: 'images/car_mercedes_1779693961278.png' },
-  { id: 'T-1002', car: 'Mercedes GLE', type: 'SUV', from: 'Airport', to: 'Downtown', start: '2026-06-01', end: '2026-06-05', amount: '$225', status: 'active', img: 'images/car_suv_1779693998248.png' },
-  { id: 'T-1003', car: 'Mercedes Sport', type: 'Sport', from: 'Hotel', to: 'Oxford Ave', start: '2026-06-20', end: '2026-06-22', amount: '$100', status: 'pending', img: 'images/car_sport_1779693979415.png' },
+  { id: 'T-1001', car: 'Mercedes E-Class', type: 'Sedan', from: 'Oxford Ave, Cary', to: 'Airport', start: '2026-05-10', end: '2026-05-15', amount: '$125', status: 'completed', img: 'images/car_mercedes_1779693961278.webp' },
+  { id: 'T-1002', car: 'Mercedes GLE', type: 'SUV', from: 'Airport', to: 'Downtown', start: '2026-06-01', end: '2026-06-05', amount: '$225', status: 'active', img: 'images/car_suv_1779693998248.webp' },
+  { id: 'T-1003', car: 'Mercedes Sport', type: 'Sport', from: 'Hotel', to: 'Oxford Ave', start: '2026-06-20', end: '2026-06-22', amount: '$100', status: 'pending', img: 'images/car_sport_1779693979415.webp' },
 ];
 
 const MOCK_BOOKINGS_ADMIN = [
@@ -18,9 +18,9 @@ const MOCK_BOOKINGS_ADMIN = [
 ];
 
 const MOCK_FLEET = [
-  { name: 'Mercedes E-Class', type: 'Sedan', status: 'active', img: 'images/car_mercedes_1779693961278.png', rate: '$25/day' },
-  { name: 'Mercedes Sport', type: 'Sport', status: 'rented', img: 'images/car_sport_1779693979415.png', rate: '$50/day' },
-  { name: 'Mercedes GLE', type: 'SUV', status: 'maintenance', img: 'images/car_suv_1779693998248.png', rate: '$45/day' },
+  { name: 'Mercedes E-Class', type: 'Sedan', status: 'active', img: 'images/car_mercedes_1779693961278.webp', rate: '$25/day' },
+  { name: 'Mercedes Sport', type: 'Sport', status: 'rented', img: 'images/car_sport_1779693979415.webp', rate: '$50/day' },
+  { name: 'Mercedes GLE', type: 'SUV', status: 'maintenance', img: 'images/car_suv_1779693998248.webp', rate: '$45/day' },
 ];
 
 /* ---- STATE ---- */

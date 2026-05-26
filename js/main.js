@@ -167,11 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   let lastScrollY = 0;
 
+  // Threshold: switch navbar once user has scrolled past the hero
+  const heroEl = document.querySelector('.ace-hero');
+  const getNavThreshold = () => heroEl
+    ? heroEl.offsetHeight * 0.6
+    : window.innerHeight * 0.6;
+
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
 
     if (navbar) {
-      if (currentScrollY > 20) {
+      if (currentScrollY > getNavThreshold()) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');

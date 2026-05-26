@@ -274,9 +274,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ---- STATS GRID ---- */
 .db-stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
+}
+@media (min-width: 480px) {
+  .db-stats-grid { grid-template-columns: 1fr 1fr; }
 }
 .db-stat-card {
   background: white;
@@ -376,8 +379,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ---- QUICK ACTIONS ---- */
 .db-quick-actions {
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid; grid-template-columns: 1fr;
   gap: 0.75rem; margin-bottom: 1.25rem;
+}
+@media (min-width: 480px) {
+  .db-quick-actions { grid-template-columns: 1fr 1fr; }
 }
 .db-quick-btn {
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;

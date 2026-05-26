@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Car Rental - Experience the road like never before. Book premium cars online with easy pickup and return. Best rates guaranteed." />
-  <meta name="keywords" content="car rental, rent a car, luxury cars, sedan, SUV, affordable car hire" />
-  <title>Car Rental - Experience The Road Like Never Before</title>
+    content="STACKLY - Experience the road like never before. Book premium cars online with easy pickup and return. Best rates guaranteed." />
+  <meta name="keywords" content="STACKLY, rent a car, luxury cars, sedan, SUV, affordable car hire" />
+  <title>STACKLY - Experience The Road Like Never Before</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235B3FD9'/><text y='22' x='4' font-size='20'>🚗</text></svg>" />
@@ -18,13 +18,7 @@
   <!-- PAGE LOADER -->
   <div id="page-loader">
     <div class="loader-logo">
-      <svg viewBox="0 0 40 24" fill="none" width="40" height="24">
-        <rect x="2" y="10" width="36" height="10" rx="3" fill="white" />
-        <path d="M8 10 L12 4 H28 L32 10" fill="white" />
-        <circle cx="10" cy="20" r="4" fill="rgba(255,255,255,0.5)" />
-        <circle cx="30" cy="20" r="4" fill="rgba(255,255,255,0.5)" />
-      </svg>
-      Car Rental
+      <img src="images/logo-stackly.webp" alt="STACKLY Logo" style="height: 36px; width: auto;" />
     </div>
     <div class="loader-bar"></div>
   </div>
@@ -32,16 +26,8 @@
   <!-- ======================= NAVBAR ======================= -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner container">
-      <a href="index.html" class="nav-logo" aria-label="Car Rental Home">
-        <svg viewBox="0 0 40 24" fill="none" aria-hidden="true">
-          <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9" />
-          <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9" />
-          <circle cx="10" cy="20" r="4" fill="#333" />
-          <circle cx="30" cy="20" r="4" fill="#333" />
-          <circle cx="10" cy="20" r="2" fill="#777" />
-          <circle cx="30" cy="20" r="2" fill="#777" />
-        </svg>
-        Car Rental
+      <a href="index.html" class="nav-logo" aria-label="STACKLY Home">
+        <img src="images/logo-stackly.webp" alt="STACKLY Logo" style="height: 28px; width: auto;" />
       </a>
       <ul class="nav-menu" role="list">
         <li><a href="index.html" class="active">Home</a></li>
@@ -76,13 +62,7 @@
     <div class="mobile-menu-inner">
       <div class="mobile-menu-header">
         <a href="index.html" class="nav-logo">
-          <svg viewBox="0 0 40 24" fill="none" width="32" aria-hidden="true">
-            <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9" />
-            <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9" />
-            <circle cx="10" cy="20" r="4" fill="#333" />
-            <circle cx="30" cy="20" r="4" fill="#333" />
-          </svg>
-          Car Rental
+          <img src="images/logo-stackly.webp" alt="STACKLY Logo" style="height: 28px; width: auto;" />
         </a>
         <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
       </div>
@@ -111,42 +91,119 @@
   </div>
 
   <main>
-    <!-- ======================= HERO (Cinematic Full-Width) ======================= -->
-    <section class="hero hero-cinematic" aria-label="Hero section">
-      <!-- Floating car image — centered with glow -->
-      <div class="hero-car-float hero-car-center" aria-hidden="true">
-        <img src="images/hero_car_1779693837452.png" alt="" loading="eager" />
+    <!-- ======================= HERO — Aceternity Style ======================= -->
+    <section class="ace-hero" aria-label="Hero section" id="hero">
+
+      <!-- Animated dot-grid background -->
+      <div class="ace-hero-grid" aria-hidden="true"></div>
+
+      <!-- Radial glow center -->
+      <div class="ace-hero-radial" aria-hidden="true"></div>
+
+      <!-- Top beam line -->
+      <div class="ace-hero-beam" aria-hidden="true">
+        <div class="ace-hero-beam-inner"></div>
       </div>
 
-      <!-- Animated particles -->
-      <div class="hero-particles" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-      </div>
+      <!-- Floating badge row -->
+      <!-- <div class="ace-hero-badge-row" data-anim="fade-down">
+        <span class="ace-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Rated #1 STACKLY 2025
+        </span>
+      </div> -->
 
-      <div class="hero-inner container">
-        <div class="hero-content hero-content-wide">
-          <p class="hero-eyebrow">Premium Car Rental</p>
-          <h1>Experience the road<br>like never before</h1>
-          <p>Aliquam adipiscing velit semper morbi. Purus non eu cursus porttitor tristique et gravida. Quis nunc interdum gravida ullamcorper</p>
-          <div class="hero-actions">
-            <a href="vehicles.html" class="btn btn-primary" id="hero-view-all-btn">View all cars</a>
-            <a href="about.html" class="hero-learn-link" id="hero-learn-btn">
-              <span class="play-circle">
-                <svg viewBox="0 0 24 24" fill="white" width="14" height="14" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </span>
-              Learn more
-            </a>
+      <!-- Main content -->
+      <div class="ace-hero-content" data-anim="fade-up">
+        <h1 class="ace-hero-h1">
+          <span class="ace-hero-h1-line">Experience the road</span>
+          <span class="ace-hero-h1-gradient">like never before</span>
+        </h1>
+        <p class="ace-hero-sub">
+          Premium vehicles. Instant booking. Zero hassle.<br>
+          Discover 540+ cars ready for your next journey.
+        </p>
+        <div class="ace-hero-ctas">
+          <a href="vehicles.html" class="ace-hero-btn-primary" id="hero-view-all-btn">
+            Browse Fleet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+          <a href="about.html" class="ace-hero-btn-ghost" id="hero-learn-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:14px;height:14px">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            Watch a tour
+          </a>
+        </div>
+        <!-- Trust row -->
+        <div class="ace-hero-trust">
+          <div class="ace-trust-avatars" aria-hidden="true">
+            <span class="ace-av" style="background:linear-gradient(135deg,#5B3FD9,#9B7EFF)">J</span>
+            <span class="ace-av" style="background:linear-gradient(135deg,#F5A623,#e09415)">S</span>
+            <span class="ace-av" style="background:linear-gradient(135deg,#22c55e,#16a34a)">R</span>
+            <span class="ace-av" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">M</span>
           </div>
-          <div class="hero-trust-row">
-            <div class="hero-trust-item"><strong>540+</strong><span>Vehicles</span></div>
-            <div class="hero-trust-divider" aria-hidden="true"></div>
-            <div class="hero-trust-item"><strong>20k+</strong><span>Customers</span></div>
-            <div class="hero-trust-divider" aria-hidden="true"></div>
-            <div class="hero-trust-item"><strong>25+</strong><span>Years</span></div>
+          <div class="ace-trust-text">
+            <div class="ace-trust-stars" aria-label="5 stars">★★★★★</div>
+            <span>Trusted by <strong>20,000+</strong> happy customers</span>
           </div>
         </div>
       </div>
+
+      <!-- Hero image panel — car with glass frame -->
+      <div class="ace-hero-img-wrap" data-anim="fade-up" data-delay="200">
+        <div class="ace-hero-img-frame">
+          <!-- Fake browser chrome -->
+          <div class="ace-hero-frame-top">
+            <span class="ace-dot red"></span>
+            <span class="ace-dot yellow"></span>
+            <span class="ace-dot green"></span>
+            <span class="ace-frame-url">stackly.com/fleet</span>
+          </div>
+          <div class="ace-hero-frame-body">
+            <img src="images/hero_car_premium.webp"
+              alt="Premium Mercedes AMG GT sports car with dramatic night lighting" loading="eager" width="900"
+              height="506" />
+            <!-- Glass overlay label -->
+            <div class="ace-hero-img-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3" />
+                <rect x="9" y="11" width="14" height="10" rx="2" />
+              </svg>
+              Audi
+            </div>
+          </div>
+        </div>
+        <!-- Glow under image -->
+        <div class="ace-hero-img-glow" aria-hidden="true"></div>
+      </div>
+
+      <!-- Stats strip inside hero -->
+      <div class="ace-hero-stats" data-anim="fade-up" data-delay="300">
+        <div class="ace-hero-stat">
+          <strong>540<span>+</span></strong>
+          <span>Premium Vehicles</span>
+        </div>
+        <div class="ace-hero-stat-divider" aria-hidden="true"></div>
+        <div class="ace-hero-stat">
+          <strong>20k<span>+</span></strong>
+          <span>Happy Customers</span>
+        </div>
+        <div class="ace-hero-stat-divider" aria-hidden="true"></div>
+        <div class="ace-hero-stat">
+          <strong>25<span>+</span></strong>
+          <span>Years Experience</span>
+        </div>
+        <div class="ace-hero-stat-divider" aria-hidden="true"></div>
+        <div class="ace-hero-stat">
+          <strong>4.9<span>★</span></strong>
+          <span>Average Rating</span>
+        </div>
+      </div>
+
     </section>
 
     <!-- ======================= QUICK BOOK BAR ======================= -->
@@ -154,7 +211,10 @@
       <div class="container">
         <div class="qb-inner">
           <div class="qb-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
             Quick Book
           </div>
           <form class="qb-form" id="qb-form" novalidate>
@@ -162,16 +222,22 @@
               <label for="qb-car-type">Car Type</label>
               <select id="qb-car-type" aria-label="Select car type">
                 <option value="" disabled selected>Any type</option>
-                <option>Sedan</option><option>SUV</option><option>Sport</option>
-                <option>Cabriolet</option><option>Pickup</option><option>Minivan</option>
+                <option>Sedan</option>
+                <option>SUV</option>
+                <option>Sport</option>
+                <option>Cabriolet</option>
+                <option>Pickup</option>
+                <option>Minivan</option>
               </select>
             </div>
             <div class="qb-field">
               <label for="qb-pickup">Pickup Location</label>
               <select id="qb-pickup" aria-label="Select pickup">
                 <option value="" disabled selected>Select location</option>
-                <option>Airport</option><option>Downtown</option>
-                <option>Hotel Delivery</option><option>Oxford Ave, Cary</option>
+                <option>Airport</option>
+                <option>Downtown</option>
+                <option>Hotel Delivery</option>
+                <option>Oxford Ave, Cary</option>
               </select>
             </div>
             <div class="qb-field">
@@ -184,7 +250,10 @@
             </div>
             <button type="submit" class="qb-submit" id="qb-submit-btn">
               Search
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </button>
           </form>
         </div>
@@ -284,7 +353,7 @@
         <div class="why-us-inner">
           <div class="why-us-img" data-anim="fade-right">
             <picture>
-              <img src="images/feature_car_1779693854802.png" alt="Luxury rental car on road" loading="lazy" />
+              <img src="images/feature_car_1779693854802.webp" alt="Luxury rental car on road" loading="lazy" />
             </picture>
             <div class="why-us-label">
               <div class="dot"></div>
@@ -348,7 +417,7 @@
         <div class="cars-grid">
           <article class="car-card" data-anim="fade-up" data-delay="100" data-type="sedan">
             <div class="car-card-img">
-              <img src="images/car_mercedes_1779693961278.png" alt="Mercedes Sedan" loading="lazy" />
+              <img src="images/car_mercedes_1779693961278.webp" alt="Mercedes Sedan" loading="lazy" />
             </div>
             <div class="car-card-body">
               <div class="car-card-header">
@@ -374,7 +443,7 @@
 
           <article class="car-card" data-anim="fade-up" data-delay="250" data-type="sport">
             <div class="car-card-img">
-              <img src="images/car_sport_1779693979415.png" alt="Mercedes Sport" loading="lazy" />
+              <img src="images/car_sport_1779693979415.webp" alt="Mercedes Sport" loading="lazy" />
             </div>
             <div class="car-card-body">
               <div class="car-card-header">
@@ -400,7 +469,7 @@
 
           <article class="car-card" data-anim="fade-up" data-delay="400" data-type="suv">
             <div class="car-card-img">
-              <img src="images/car_suv_1779693998248.png" alt="Mercedes GLE SUV" loading="lazy" />
+              <img src="images/car_suv_1779693998248.webp" alt="Mercedes GLE SUV" loading="lazy" />
             </div>
             <div class="car-card-body">
               <div class="car-card-header">
@@ -528,7 +597,7 @@
           </div>
           <div class="testimonial-card" data-anim="fade-up" data-delay="400">
             <div class="review-stars" aria-label="5 stars">★★★★★</div>
-            <p class="testimonial-text">"Best car rental experience I've had. Quick booking, spotless car at the airport
+            <p class="testimonial-text">"Best STACKLY experience I've had. Quick booking, spotless car at the airport
               on arrival. The 24/7 support gave me real peace of mind on my trip."</p>
             <div class="testimonial-author">
               <div class="author-avatar" aria-hidden="true">RT</div>
@@ -559,7 +628,7 @@
             <a href="vehicles.html" class="btn btn-primary" id="offer-cta-btn">Explore Deals</a>
           </div>
           <div class="offer-img-wrap" aria-hidden="true">
-            <img src="images/car_sport_1779693979415.png" alt="" />
+            <img src="images/car_sport_1779693979415.webp" alt="" />
           </div>
         </div>
       </div>
@@ -671,13 +740,8 @@
         <!-- Brand -->
         <div class="footer-col footer-col-brand" data-anim="fade-up">
           <a href="index.html" class="footer-logo">
-            <svg viewBox="0 0 40 24" width="32" fill="none" aria-hidden="true">
-              <rect x="2" y="10" width="36" height="10" rx="3" fill="#5B3FD9" />
-              <path d="M8 10 L12 4 H28 L32 10" fill="#5B3FD9" />
-              <circle cx="10" cy="20" r="4" fill="#333" />
-              <circle cx="30" cy="20" r="4" fill="#333" />
-            </svg>
-            Car Rental
+            <img src="images/logo-stackly.webp" alt="STACKLY Logo"
+              style="height: 32px; width: auto; margin-bottom: 0.5rem;" />
           </a>
           <p class="footer-tagline">Faucibus faucibus pellentesque dictum turpis. Id pellentesque dictum turpis massa a
             id iaculis lorem t...</p>
@@ -757,7 +821,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; Copyright Car Rental 2024. Design by Figma.guru</p>
+        <p>&copy; Copyright STACKLY 2024. Design by Figma.guru</p>
       </div>
     </div>
   </footer>
