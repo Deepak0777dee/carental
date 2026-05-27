@@ -577,23 +577,24 @@ button, input, select, textarea { font-family: var(--font); outline: none; borde
 .contact-section { padding: 4rem 0; }
 .contact-grid { display:grid; grid-template-columns:1fr; gap:2rem; margin-bottom:3rem; }
 .contact-book-card {
-  background: #020010;
-  border: 1px solid rgba(91,63,217,0.3);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
   border-radius: var(--border-radius-lg);
   padding: 2.5rem 2rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 30px rgba(91,63,217,0.1);
+  box-shadow: var(--shadow-md);
 }
-.contact-book-card h2 { color: var(--white); font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; text-align: center; }
+.contact-book-card h2 { color: var(--text-primary); font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; text-align: center; }
 .contact-book-card .form-select, .contact-book-card .form-date, .contact-book-card .form-control {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.12);
-  color: var(--white);
+  background: var(--white);
+  border-color: var(--gray-200);
+  color: var(--text-primary);
 }
 .contact-book-card .form-select:focus, .contact-book-card .form-date:focus, .contact-book-card .form-control:focus {
-  border-color: rgba(91,63,217,0.8);
-  background: rgba(91,63,217,0.1);
+  border-color: var(--accent);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(91,63,217,0.1);
 }
-.contact-book-card .form-select option { background: #0D0821; color: var(--white); }
+.contact-book-card .form-select option { background: var(--white); color: var(--text-primary); }
 .contact-map { border-radius:var(--border-radius-lg); overflow:hidden; min-height:320px; background:var(--gray-200); }
 .contact-map img { width:100%; height:100%; object-fit:cover; }
 .contact-info-row { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:4rem; }
