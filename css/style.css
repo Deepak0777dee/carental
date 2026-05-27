@@ -425,6 +425,11 @@ textarea {
   cursor: pointer;
   padding: 4px;
   background: none;
+  order: 3; /* Move toggle to rightmost edge on mobile */
+}
+
+.nav-login-btn-wrap {
+  order: 2; /* Move login button before toggle on mobile */
 }
 
 .nav-toggle span {

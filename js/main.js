@@ -503,4 +503,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* =============================================
+     GLOBAL CONTACT BLOCK CLICKS
+     ============================================= */
+  // Make entire nav-phone blocks clickable
+  document.querySelectorAll('.nav-phone, .mobile-phone').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', (e) => {
+      if (e.target.tagName.toLowerCase() === 'a') return;
+      window.location.href = 'tel:+917010792745';
+    });
+  });
+
+  // Make entire footer contact items clickable
+  document.querySelectorAll('.footer-contact-item').forEach(el => {
+    const text = el.textContent.toLowerCase();
+    el.style.cursor = 'pointer';
+    
+    el.addEventListener('mouseenter', () => { el.style.opacity = '0.8'; });
+    el.addEventListener('mouseleave', () => { el.style.opacity = '1'; });
+
+    el.addEventListener('click', (e) => {
+      if (e.target.tagName.toLowerCase() === 'a') return;
+      
+      if (text.includes('address') || text.includes('salem')) {
+        window.open('https://maps.google.com/?q=MMR+Complex,+Chinna+Thirupathi,+near+Chinna+Muniyappan+Kovil,+Salem,+Tamil+Nadu+636008', '_blank');
+      } else if (text.includes('email')) {
+        window.location.href = 'mailto:info@thestackly.com';
+      } else if (text.includes('phone') || text.includes('70107')) {
+        window.location.href = 'tel:+917010792745';
+      }
+    });
+  });
+
 });
