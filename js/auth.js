@@ -13,7 +13,9 @@ function authLogin(name, email, role, password) {
 
 /** Register a new user (same shape as login) */
 function authSignup(name, email, role, password) {
-  return authLogin(name, email, role, password);
+  const user = { name, email, role, password, loggedIn: false, ts: Date.now() };
+  localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+  return user;
 }
 
 /** Get current logged-in user or null */
